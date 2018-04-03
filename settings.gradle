@@ -1,0 +1,1 @@
+include ':app', ':friends', ':demotextfield', ':demotoast', ':demoimages', ':currencyconverter', ':guessthenumber', ':demoanimationfade', ':demoanimation', ':demovideo', ':demoaudio', ':demolistview', ':demotimestable', ':eggtimer', ':braintrainer', ':guessthecelebrity', ':whatstheweather', ':demouserslocation', ':userslocationonamap', ':hikerswatch', ':memorableplaces'

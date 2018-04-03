@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">US Dollar to Indian Rupees Converter</string>
+    <string name="editTextHint">Enter amount in US Dollar</string>
+</resources>

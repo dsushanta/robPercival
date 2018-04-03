@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/braintrainer" />
+            <option value="$PROJECT_DIR$/currencyconverter" />
+            <option value="$PROJECT_DIR$/demoanimation" />
+            <option value="$PROJECT_DIR$/demoanimationfade" />
+            <option value="$PROJECT_DIR$/demoaudio" />
+            <option value="$PROJECT_DIR$/demoimages" />
+            <option value="$PROJECT_DIR$/demolistview" />
+            <option value="$PROJECT_DIR$/demotextfield" />
+            <option value="$PROJECT_DIR$/demotimestable" />
+            <option value="$PROJECT_DIR$/demotoast" />
+            <option value="$PROJECT_DIR$/demouserslocation" />
+            <option value="$PROJECT_DIR$/demovideo" />
+            <option value="$PROJECT_DIR$/eggtimer" />
+            <option value="$PROJECT_DIR$/friends" />
+            <option value="$PROJECT_DIR$/guessthecelebrity" />
+            <option value="$PROJECT_DIR$/guessthenumber" />
+            <option value="$PROJECT_DIR$/hikerswatch" />
+            <option value="$PROJECT_DIR$/memorableplaces" />
+            <option value="$PROJECT_DIR$/userslocationonamap" />
+            <option value="$PROJECT_DIR$/whatstheweather" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

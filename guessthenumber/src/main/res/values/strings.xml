@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Guess The Number</string>
+    <string name="Heading">I am thinking of a number between 1 and 100</string>
+    <string name="Question">Can you guess it ?</string>
+</resources>
