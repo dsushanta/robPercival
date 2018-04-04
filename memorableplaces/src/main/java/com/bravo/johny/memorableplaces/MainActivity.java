@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         places.add("Add a new place");
         locations.add(new LatLng(0,0));
 
-        arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, places);
+        arrayAdapter = new ArrayAdapter(this, R.layout.simple_list_item_1, places);
         listView.setAdapter(arrayAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
