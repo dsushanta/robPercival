@@ -5,10 +5,10 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/braintrainer/braintrainer.iml" filepath="$PROJECT_DIR$/braintrainer/braintrainer.iml" />
       <module fileurl="file://$PROJECT_DIR$/currencyconverter/currencyconverter.iml" filepath="$PROJECT_DIR$/currencyconverter/currencyconverter.iml" />
-      <module fileurl="file://$PROJECT_DIR$/demoanimation/demoanimation.iml" filepath="$PROJECT_DIR$/demoanimation/demoanimation.iml" />
       <module fileurl="file://$PROJECT_DIR$/demoanimationfade/demoanimationfade.iml" filepath="$PROJECT_DIR$/demoanimationfade/demoanimationfade.iml" />
       <module fileurl="file://$PROJECT_DIR$/demoaudio/demoaudio.iml" filepath="$PROJECT_DIR$/demoaudio/demoaudio.iml" />
       <module fileurl="file://$PROJECT_DIR$/demoimages/demoimages.iml" filepath="$PROJECT_DIR$/demoimages/demoimages.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demolanguagepreferences/demolanguagepreferences.iml" filepath="$PROJECT_DIR$/demolanguagepreferences/demolanguagepreferences.iml" />
       <module fileurl="file://$PROJECT_DIR$/demolistview/demolistview.iml" filepath="$PROJECT_DIR$/demolistview/demolistview.iml" />
       <module fileurl="file://$PROJECT_DIR$/demotextfield/demotextfield.iml" filepath="$PROJECT_DIR$/demotextfield/demotextfield.iml" />
       <module fileurl="file://$PROJECT_DIR$/demotimestable/demotimestable.iml" filepath="$PROJECT_DIR$/demotimestable/demotimestable.iml" />
@@ -20,7 +20,12 @@
       <module fileurl="file://$PROJECT_DIR$/guessthecelebrity/guessthecelebrity.iml" filepath="$PROJECT_DIR$/guessthecelebrity/guessthecelebrity.iml" />
       <module fileurl="file://$PROJECT_DIR$/guessthenumber/guessthenumber.iml" filepath="$PROJECT_DIR$/guessthenumber/guessthenumber.iml" />
       <module fileurl="file://$PROJECT_DIR$/hikerswatch/hikerswatch.iml" filepath="$PROJECT_DIR$/hikerswatch/hikerswatch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/instagramclone/instagramclone.iml" filepath="$PROJECT_DIR$/instagramclone/instagramclone.iml" />
       <module fileurl="file://$PROJECT_DIR$/memorableplaces/memorableplaces.iml" filepath="$PROJECT_DIR$/memorableplaces/memorableplaces.iml" />
+      <module fileurl="file://$PROJECT_DIR$/newsreader/newsreader.iml" filepath="$PROJECT_DIR$/newsreader/newsreader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/notes/notes.iml" filepath="$PROJECT_DIR$/notes/notes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parseServerPractice/parseServerPractice.iml" filepath="$PROJECT_DIR$/parseServerPractice/parseServerPractice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/practiceparsedserver/practiceparsedserver.iml" filepath="$PROJECT_DIR$/practiceparsedserver/practiceparsedserver.iml" />
       <module fileurl="file://$PROJECT_DIR$/robPercival.iml" filepath="$PROJECT_DIR$/robPercival.iml" />
       <module fileurl="file://$PROJECT_DIR$/userslocationonamap/userslocationonamap.iml" filepath="$PROJECT_DIR$/userslocationonamap/userslocationonamap.iml" />
       <module fileurl="file://$PROJECT_DIR$/whatstheweather/whatstheweather.iml" filepath="$PROJECT_DIR$/whatstheweather/whatstheweather.iml" />

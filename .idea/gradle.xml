@@ -11,10 +11,10 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/braintrainer" />
             <option value="$PROJECT_DIR$/currencyconverter" />
-            <option value="$PROJECT_DIR$/demoanimation" />
             <option value="$PROJECT_DIR$/demoanimationfade" />
             <option value="$PROJECT_DIR$/demoaudio" />
             <option value="$PROJECT_DIR$/demoimages" />
+            <option value="$PROJECT_DIR$/demolanguagepreferences" />
             <option value="$PROJECT_DIR$/demolistview" />
             <option value="$PROJECT_DIR$/demotextfield" />
             <option value="$PROJECT_DIR$/demotimestable" />
@@ -26,7 +26,12 @@
             <option value="$PROJECT_DIR$/guessthecelebrity" />
             <option value="$PROJECT_DIR$/guessthenumber" />
             <option value="$PROJECT_DIR$/hikerswatch" />
+            <option value="$PROJECT_DIR$/instagramclone" />
             <option value="$PROJECT_DIR$/memorableplaces" />
+            <option value="$PROJECT_DIR$/newsreader" />
+            <option value="$PROJECT_DIR$/notes" />
+            <option value="$PROJECT_DIR$/parseServerPractice" />
+            <option value="$PROJECT_DIR$/practiceparsedserver" />
             <option value="$PROJECT_DIR$/userslocationonamap" />
             <option value="$PROJECT_DIR$/whatstheweather" />
           </set>
