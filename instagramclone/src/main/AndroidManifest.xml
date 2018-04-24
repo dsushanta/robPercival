@@ -14,7 +14,7 @@
         android:roundIcon="@drawable/insta_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,7 +30,9 @@
             android:value="@string/parse_app_id" />
 
         <activity android:name=".UserListActivity" />
-        <activity android:name=".UserFeedActivity"></activity>
+        <activity android:name=".UserFeedActivity" />
+        <activity android:name=".UserPhotoActivity" />
+        <activity android:name=".SignUpActivity"></activity>
     </application>
 
 </manifest>

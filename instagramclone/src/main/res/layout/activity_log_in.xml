@@ -134,15 +134,15 @@
                     android:layout_weight="1" />
 
                 <Button
-                    android:id="@+id/signUpButton"
+                    android:id="@+id/logInButton"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_below="@+id/passwordEditTextView"
                     android:layout_centerHorizontal="true"
                     android:layout_weight="3"
                     android:backgroundTint="@android:color/holo_orange_light"
-                    android:onClick="signUp"
-                    android:text="Sign Up"
+                    android:onClick="logIn"
+                    android:text="Log In"
                     android:textStyle="bold" />
 
                 <android.support.v4.widget.Space
@@ -158,15 +158,15 @@
                 android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/changeModeTextView"
+                android:id="@+id/signUpModeTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_below="@+id/signUpButton"
+                android:layout_below="@+id/browseButton"
                 android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:text="or Login"
-                android:textColor="@android:color/holo_blue_light"
-                android:layout_gravity="center_horizontal"/>
+                android:text="Sign Up"
+                android:textColor="@android:color/holo_blue_light" />
 
         </LinearLayout>
 

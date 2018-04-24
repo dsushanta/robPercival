@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -15,11 +16,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -27,16 +26,18 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserListActivity extends AppCompatActivity {
 
-    ArrayList<String> userList = new ArrayList<>();
-    ArrayAdapter arrayAdapter;
+    ArrayList<User> userList = new ArrayList<>();
+    UserAdapter userAdapter;
+    Map<String, Bitmap> imageMap = new HashMap<>();
 
     ListView userListView;
 
@@ -59,7 +60,7 @@ public class UserListActivity extends AppCompatActivity {
                 getPhoto();
         } else if(item.getItemId() == R.id.logout) {
             ParseUser.logOut();
-            Intent intent = new Intent(UserListActivity.this, MainActivity.class);
+            Intent intent = new Intent(UserListActivity.this, LoginActivity.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
@@ -92,12 +93,61 @@ public class UserListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), UserFeedActivity.class);
-                intent.putExtra("username", userList.get(position));
+                intent.putExtra("username", userList.get(position).getName());
                 startActivity(intent);
             }
         });
 
-        arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, userList);
+        userAdapter = new UserAdapter(this, R.layout.row, userList);
+
+        // Get user profile pictures and store it in a map
+
+        ParseQuery<ParseObject> imageQuery = new ParseQuery<>("Image");
+        imageQuery.whereEqualTo("userPhoto", 1);
+
+        try {
+            List<ParseObject> parseImages = imageQuery.find();
+            if (parseImages.size() > 0) {
+                for (ParseObject parseImage : parseImages) {
+                    String userName = parseImage.getString("username");
+                    Log.i("friends", "this is from image class : "+userName);
+                    Bitmap imageBitmap = getBitmapImage(parseImage);
+                    imageBitmap = scale(imageBitmap, 300, true);
+                    imageMap.put(userName, imageBitmap);
+                }
+            } else {
+                Log.i("friends", "No images returned");
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        ParseQuery<ParseUser> userQuery = ParseUser.getQuery();
+        userQuery.whereNotEqualTo("username", ParseUser.getCurrentUser().getUsername());
+        userQuery.addAscendingOrder("username");
+
+        try {
+            List<ParseUser> parseUsers = userQuery.find();
+            if(parseUsers.size() > 0) {
+                for(ParseUser parseUser : parseUsers) {
+                    String userName = parseUser.getUsername();
+                    String city = "London";
+                    Bitmap image = null;
+                    image = imageMap.get(userName);
+                    User user = new User(userName, city, image);
+                    userList.add(user);
+                }
+                userListView.setAdapter(userAdapter);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        userAdapter.notifyDataSetChanged();
+
+        // ----------------------------------------------------------------------------------------
+
+        /*arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, userList);
 
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.whereNotEqualTo("username", ParseUser.getCurrentUser().getUsername());
@@ -119,7 +169,9 @@ public class UserListActivity extends AppCompatActivity {
             }
         });
 
-        arrayAdapter.notifyDataSetChanged();
+        arrayAdapter.notifyDataSetChanged();*/
+
+        // ----------------------------------------------------------------------------------------
     }
 
     @Override
@@ -156,5 +208,41 @@ public class UserListActivity extends AppCompatActivity {
             }
         }
 
+    }
+
+    public Bitmap getBitmapImage(ParseObject object) {
+
+        final Bitmap[] bitmap = {null};
+
+        ParseFile imageFile = (ParseFile) object.get("image");
+        /*imageFile.getDataInBackground(new GetDataCallback() {
+            @Override
+            public void done(byte[] data, ParseException e) {
+                if(e == null && data != null) {
+                    bitmap[0] = BitmapFactory.decodeByteArray(data, 0, data.length);
+                }
+            }
+        });*/
+        try {
+            byte[] data = imageFile.getData();
+            bitmap[0] = BitmapFactory.decodeByteArray(data, 0, data.length);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return bitmap[0];
+    }
+
+    public static Bitmap scale(Bitmap realImage, float maxImageSize,boolean filter) {
+        float ratio = Math.min(
+                maxImageSize / realImage.getWidth(),
+                maxImageSize / realImage.getHeight());
+        int width = Math.round(ratio * realImage.getWidth());
+        int height = Math.round(ratio * realImage.getHeight());
+
+        int avg = (width + height) / 2;
+
+        Bitmap newBitmap = Bitmap.createScaledBitmap(realImage, avg, avg, filter);
+        return newBitmap;
     }
 }
