@@ -32,7 +32,9 @@
         <activity android:name=".UserListActivity" />
         <activity android:name=".UserFeedActivity" />
         <activity android:name=".UserPhotoActivity" />
-        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".PhotoActivity" />
+        <activity android:name=".UserFeedGridActivity"></activity>
     </application>
 
 </manifest>

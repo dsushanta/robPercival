@@ -1,15 +1,15 @@
 package com.bravo.johny.instagramclone;
 
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.parse.FindCallback;
 import com.parse.GetDataCallback;
@@ -19,21 +19,24 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
-public class UserFeedActivity extends AppCompatActivity {
-
-    LinearLayout linearLayout;
-    ImageView imageView;
+public class UserFeedGridActivity extends AppCompatActivity {
 
     String selectedUser;
+    ArrayList<Bitmap> photoList = new ArrayList<>();
+
+    GridView photoGridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_feed);
+        setContentView(R.layout.activity_user_feed_grid);
 
-        linearLayout = findViewById(R.id.linearLayout);
+        photoGridView = findViewById(R.id.photoGridView);
+
+        PhotoAdapter photoAdapter = new PhotoAdapter(this, R.layout.photo_icon, photoList);
 
         Intent intent = getIntent();
         selectedUser = intent.getStringExtra("username");
@@ -54,30 +57,27 @@ public class UserFeedActivity extends AppCompatActivity {
                                 public void done(byte[] data, ParseException e) {
                                     if(e == null && data != null) {
                                         final Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
-                                        imageView = new ImageView(getApplicationContext());
-                                        imageView.setLayoutParams(new ViewGroup.LayoutParams(
-                                                ViewGroup.LayoutParams.MATCH_PARENT,
-                                                ViewGroup.LayoutParams.WRAP_CONTENT
-                                        ));
-                                        imageView.setImageBitmap(bitmap);
-                                        linearLayout.addView(imageView);
-                                        imageView.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                Intent intent = new Intent(getApplicationContext(), PhotoActivity.class);
-                                                ByteArrayOutputStream bStream = new ByteArrayOutputStream();
-                                                bitmap.compress(Bitmap.CompressFormat.PNG, 100, bStream);
-                                                byte[] byteArray = bStream.toByteArray();
-                                                intent.putExtra("image", byteArray);
-                                                startActivity(intent);
-                                            }
-                                        });
+                                        photoList.add(bitmap);
                                     }
                                 }
                             });
                         }
                     }
                 }
+            }
+        });
+        photoGridView.setAdapter(photoAdapter);
+        photoAdapter.notifyDataSetChanged();
+
+        photoGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), PhotoActivity.class);
+                ByteArrayOutputStream bStream = new ByteArrayOutputStream();
+                photoList.get(position).compress(Bitmap.CompressFormat.PNG, 100, bStream);
+                byte[] byteArray = bStream.toByteArray();
+                intent.putExtra("image", byteArray);
+                startActivity(intent);
             }
         });
     }

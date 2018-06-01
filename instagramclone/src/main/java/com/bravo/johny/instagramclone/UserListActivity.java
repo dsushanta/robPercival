@@ -93,6 +93,7 @@ public class UserListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), UserFeedActivity.class);
+//                Intent intent = new Intent(getApplicationContext(), UserFeedGridActivity.class);
                 intent.putExtra("username", userList.get(position).getName());
                 startActivity(intent);
             }
@@ -131,7 +132,7 @@ public class UserListActivity extends AppCompatActivity {
             if(parseUsers.size() > 0) {
                 for(ParseUser parseUser : parseUsers) {
                     String userName = parseUser.getUsername();
-                    String city = "London";
+                    String city = parseUser.getString("city");
                     Bitmap image = null;
                     image = imageMap.get(userName);
                     User user = new User(userName, city, image);
