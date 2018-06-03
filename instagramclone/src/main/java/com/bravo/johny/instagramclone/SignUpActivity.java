@@ -35,6 +35,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     public void showUserPhoto() {
         Intent intent = new Intent(getApplicationContext(), UserPhotoActivity.class);
         startActivity(intent);
+        finish();
     }
 
     private Boolean allFieldsHaveValues() {

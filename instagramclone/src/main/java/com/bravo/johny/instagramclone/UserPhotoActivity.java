@@ -42,6 +42,7 @@ public class UserPhotoActivity extends AppCompatActivity {
     public void navigateToUserList(View view) {
         Intent intent = new Intent(getApplicationContext(), UserListActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public Bitmap getBitmapImage(ParseObject object) {

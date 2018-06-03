@@ -28,9 +28,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     RelativeLayout backgroundRelativeLayout;
     ImageView logoImageView;
 
+
     public void showUserPhoto() {
         Intent intent = new Intent(getApplicationContext(), UserPhotoActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void logIn(View view) {

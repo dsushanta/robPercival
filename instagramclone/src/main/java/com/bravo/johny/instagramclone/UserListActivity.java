@@ -62,6 +62,7 @@ public class UserListActivity extends AppCompatActivity {
             ParseUser.logOut();
             Intent intent = new Intent(UserListActivity.this, LoginActivity.class);
             startActivity(intent);
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }

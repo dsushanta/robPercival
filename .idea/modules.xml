@@ -28,6 +28,7 @@
       <module fileurl="file://$PROJECT_DIR$/parseServerPractice/parseServerPractice.iml" filepath="$PROJECT_DIR$/parseServerPractice/parseServerPractice.iml" />
       <module fileurl="file://$PROJECT_DIR$/practiceparsedserver/practiceparsedserver.iml" filepath="$PROJECT_DIR$/practiceparsedserver/practiceparsedserver.iml" />
       <module fileurl="file://$PROJECT_DIR$/robPercival.iml" filepath="$PROJECT_DIR$/robPercival.iml" />
+      <module fileurl="file://$PROJECT_DIR$/twitterclone/twitterclone.iml" filepath="$PROJECT_DIR$/twitterclone/twitterclone.iml" />
       <module fileurl="file://$PROJECT_DIR$/userslocationonamap/userslocationonamap.iml" filepath="$PROJECT_DIR$/userslocationonamap/userslocationonamap.iml" />
       <module fileurl="file://$PROJECT_DIR$/whatstheweather/whatstheweather.iml" filepath="$PROJECT_DIR$/whatstheweather/whatstheweather.iml" />
     </modules>
