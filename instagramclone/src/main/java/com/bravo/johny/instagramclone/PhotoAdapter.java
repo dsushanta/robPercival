@@ -5,13 +5,13 @@ import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import java.util.List;
 
-public class PhotoAdapter extends BaseAdapter{
+public class PhotoAdapter extends ArrayAdapter<Bitmap> {
 
     private Context mContext;
     private int mLayoutResourceId;
@@ -20,6 +20,7 @@ public class PhotoAdapter extends BaseAdapter{
     LayoutInflater inflater;
 
     public PhotoAdapter(Context mContext, int resource, List<Bitmap> data) {
+        super(mContext, resource, data);
         this.mContext = mContext;
         this.data = data;
         this.mLayoutResourceId = resource;
@@ -37,18 +38,24 @@ public class PhotoAdapter extends BaseAdapter{
         return data;
     }
 
+    /**
+     * Updates grid data and refresh grid items.
+     * @param data
+     */
     public void setData(List<Bitmap> data) {
+
         this.data = data;
+        notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return data.size();
     }
 
     @Override
-    public Object getItem(int position) {
-        return null;
+    public Bitmap getItem(int position) {
+        return data.get(position);
     }
 
     @Override
@@ -65,7 +72,7 @@ public class PhotoAdapter extends BaseAdapter{
             inflater = LayoutInflater.from(this.mContext);
             view = inflater.inflate(mLayoutResourceId, parent, false);
             photoHolder = new PhotoHolder();
-            photoHolder.imageView = view.findViewById(R.id.iconImageView);
+            photoHolder.imageView = view.findViewById(R.id.gridImageView);
 
             view.setTag(photoHolder);
         } else {
@@ -73,10 +80,10 @@ public class PhotoAdapter extends BaseAdapter{
         }
 
         Bitmap bitmap = data.get(position);
-//        photoHolder.imageView.setImageBitmap(bitmap);
-        photoHolder.imageView.setImageResource(R.drawable.ic_face_black_24dp);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(250, 250);
-        photoHolder.imageView.setLayoutParams(layoutParams);
+        photoHolder.imageView.setImageBitmap(bitmap);
+
+        /*LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(250, 250);
+        photoHolder.imageView.setLayoutParams(layoutParams);*/
 
         return view;
     }

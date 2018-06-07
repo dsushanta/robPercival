@@ -41,6 +41,7 @@ public class UserFeedActivity extends AppCompatActivity {
 
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Image");
         query.whereEqualTo("username", selectedUser);
+        query.whereNotEqualTo("userPhoto",1);
         query.orderByDescending("createdAt");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override

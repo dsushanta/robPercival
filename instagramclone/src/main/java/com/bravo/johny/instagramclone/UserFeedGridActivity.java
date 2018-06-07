@@ -36,7 +36,9 @@ public class UserFeedGridActivity extends AppCompatActivity {
 
         photoGridView = findViewById(R.id.photoGridView);
 
-        PhotoAdapter photoAdapter = new PhotoAdapter(this, R.layout.photo_icon, photoList);
+        PhotoAdapter photoAdapter = new PhotoAdapter(this, R.layout.grid_photo_icon, photoList);
+
+        photoGridView.setAdapter(photoAdapter);
 
         Intent intent = getIntent();
         selectedUser = intent.getStringExtra("username");
@@ -44,8 +46,9 @@ public class UserFeedGridActivity extends AppCompatActivity {
 
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Image");
         query.whereEqualTo("username", selectedUser);
+        query.whereNotEqualTo("userPhoto", 1);
         query.orderByDescending("createdAt");
-        query.findInBackground(new FindCallback<ParseObject>() {
+        /*query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
                 if(e == null) {
@@ -65,8 +68,34 @@ public class UserFeedGridActivity extends AppCompatActivity {
                     }
                 }
             }
-        });
-        photoGridView.setAdapter(photoAdapter);
+        });*/
+
+        try {
+            List<ParseObject> parseObjects = query.find();
+            if(parseObjects.size() > 0) {
+                for(ParseObject object : parseObjects) {
+                    ParseFile imageFile = (ParseFile) object.get("image");
+                    /*imageFile.getDataInBackground(new GetDataCallback() {
+                        @Override
+                        public void done(byte[] data, ParseException e) {
+                            if(e == null && data != null) {
+                                final Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                photoList.add(bitmap);
+                            }
+                        }
+                    });*/
+                    byte[] data = imageFile.getData();
+                    if(data != null) {
+                        final Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+                        photoList.add(bitmap);
+                    }
+                }
+                photoAdapter.notifyDataSetChanged();
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         photoAdapter.notifyDataSetChanged();
 
         photoGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

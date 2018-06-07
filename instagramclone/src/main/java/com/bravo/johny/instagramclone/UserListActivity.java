@@ -93,8 +93,8 @@ public class UserListActivity extends AppCompatActivity {
         userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), UserFeedActivity.class);
-//                Intent intent = new Intent(getApplicationContext(), UserFeedGridActivity.class);
+//                Intent intent = new Intent(getApplicationContext(), UserFeedActivity.class);
+                Intent intent = new Intent(getApplicationContext(), UserFeedGridActivity.class);
                 intent.putExtra("username", userList.get(position).getName());
                 startActivity(intent);
             }
@@ -193,6 +193,7 @@ public class UserListActivity extends AppCompatActivity {
                 ParseFile parseFile = new ParseFile("image.png", bytes);
                 ParseObject object = new ParseObject("Image");
                 object.put("image", parseFile);
+                object.put("userPhoto", 0);
                 object.put("username", ParseUser.getCurrentUser().getUsername());
                 object.saveInBackground(new SaveCallback() {
                     @Override
